@@ -1,0 +1,109 @@
+$font-family: "Inter", sans-serif;
+$color-heading: #717680;
+$color-list: #535862;
+$color-badge-bg: #ecfdf3;
+$color-badge-fg: #027a48;
+$color-bottom: #000;
+$color-copy: #717680;
+
+@mixin font-style(
+  $weight,
+  $size,
+  $line,
+  $color: $color-bottom,
+  $style: normal
+) {
+  font-family: $font-family;
+  font-weight: $weight;
+  font-size: $size;
+  line-height: $line;
+  color: $color;
+  font-style: $style;
+}
+
+h6 {
+  @include font-style(600, 14px, 20px, $color-heading);
+  text-transform: capitalize;
+  margin-bottom: 1rem;
+}
+ul {
+  padding-left: 0;
+  margin-bottom: 0;
+}
+ul li {
+  @include font-style(600, 16px, 24px, $color-list);
+  padding: 8px 0;
+  list-style: none;
+}
+ul li a {
+  color: $color-list;
+  text-decoration: none;
+  transition: color 0.15s;
+  &:hover,
+  &:focus {
+    color: $color-heading;
+    text-decoration: underline;
+  }
+}
+.badge {
+  background-color: $color-badge-bg;
+  color: $color-badge-fg;
+  font-size: 0.85em;
+  font-weight: 500;
+  padding: 0.2em 0.7em;
+  margin-left: 0.2em;
+  border-radius: 8px;
+}
+.footer-logo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .heading-bottom {
+    @include font-style(700, 16px, 24px, $color-bottom, italic);
+    letter-spacing: 0;
+  }
+  .copy-right {
+    @include font-style(400, 15px, 22px, $color-copy);
+    letter-spacing: 0;
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 767px) {
+  .footer-logo {
+    display: block;
+    text-align: center;
+    a {
+      margin-left: 28%;
+    }
+  }
+
+  .heading-bottom {
+    font-family: Inter;
+    font-weight: 700;
+    font-style: Italic;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+  }
+  .copy-right {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    text-align: right;
+  }
+  h6 {
+    font-size: 13px;
+    line-height: 16px;
+  }
+  ul li {
+    font-family: Inter;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    padding: 6px 0;
+  }
+}
