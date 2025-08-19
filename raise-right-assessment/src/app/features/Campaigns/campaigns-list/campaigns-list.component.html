@@ -1,1 +1,60 @@
-<p>campaigns-list works!</p>
+<header class="hero mt-5">
+  <div class="hero__content d-flex justify-content-center align-items-center flex-column text-center"
+  >
+    <h6 class="hero__subtitle">Donations Campaigns</h6>
+    <h1 class="hero__title pt-2">Make a Positive Impact</h1>
+    <p class="hero__text pt-2">
+      Every penny counts,<br />Donate now and make the world a better place.
+    </p>
+  </div>
+</header>
+
+<section class="mt-5">
+  <div class="container my-5">
+    <div class="row g-4" *ngIf="!loading">
+      @for (campaign of campaigns; track campaign.id) {
+      <div class="col-md-3 col-sm-6">
+        <div class="campaign-card">
+          <div class="campaign-card__image">
+            <img
+              [src]="campaign.imageUrl"
+              alt="{{ campaign.name }}"
+              class="w-100"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="campaign-card__body">
+            <progress
+              class="progress-bar"
+              [value]="campaign.currentAmount"
+              [max]="campaign.goal"
+            ></progress>
+            <h6 class="campaign-card__title">{{ campaign.name }}</h6>
+            <p class="campaign-card__info">Target: ${{ campaign.goal }}</p>
+            <p class="campaign-card__info">
+              Raised: ${{ campaign.currentAmount }}
+            </p>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+    @if (loading){
+    <div class="text-center py-5">
+      <p>Loading campaigns...</p>
+    </div>
+    }
+  </div>
+</section>
+<section class="notification mt-5 py-5">
+    <div class="content d-flex flex-column  align-items-center ">
+        <h3>Get Notified of New Campaigns</h3>
+        <p>Be the first to know!</p>
+        <form class="d-flex mt-4">
+            <input type="text" class="form-control w-100" placeholder="Enter your email">
+           <button class="btn ms-3">Subscribe</button>
+        </form>
+        <span class="pt-2 text-start w-100">We care about your data in our <a>privacy policy</a></span>
+    </div>
+</section>
