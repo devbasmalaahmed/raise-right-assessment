@@ -77,9 +77,8 @@ $color-card-shadow: rgba(0, 0, 0, 0.08);
 
 /* Progress bar */
 .progress-bar {
-  width: 100%;
-  height: 9px;
-  border-radius: 4px;
+  height: 8px;
+  border-radius: 12px;
   overflow: hidden;
   margin-bottom: 5px;
   background-color: $color-progress-bg;
@@ -107,95 +106,20 @@ img {
   display: block;
 }
 
-/* Notification Section */
-.notification {
-  background-color: #fafafa;
-  padding: 2rem;
-
-  h3 {
-    font-family: $font-family;
-    font-weight: 600;
-    font-size: 36px;
-    line-height: 44px;
-    letter-spacing: -2%;
-    text-align: center;
-    color: $color-dark;
-  }
-
-  p {
-    font-family: $font-family;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 30px;
-    text-align: center;
-    color: $color-gray;
-  }
-
-  span {
-    font-family: $font-family;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 20px;
-    color: $color-gray;
-    text-align: left;
-    max-width: 473px;
-    display: block;
-    margin: auto;
-    width: 374px;
-  }
-
-  span a {
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-  .form-control {
-    height: 48px;
-    width: 360px !important;
-    border-radius: 8px;
-    border: 1px solid #d5d7da;
-    box-shadow: 0px 1px 2px 0px #0a0d120d;
-    margin: 0 auto;
-  }
-
-  .btn {
-    background-color: $color-primary;
-    border: 1px solid $color-primary;
-    border-radius: 8px;
-    color: #fff;
-    font-family: $font-family;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    padding: 0.6rem 1.4rem;
-  }
-}
-
-/* =========================
+/* 
    Responsive Breakpoints
-   ========================= */
+    */
 
 /* Tablets */
 @media (max-width: 992px) {
   .hero__title {
     font-family: Inter;
-font-weight: 700;
-font-style: Bold;
-font-size: Static/Display Large/Size;
-line-height: Static/Display Large/Line Height;
-letter-spacing: Static/Display Large/Tracking;
-text-align: center;
-
-  }
-
-  .notification h3 {
-    font-size: 28px;
-    line-height: 36px;
-  }
-
-  .notification p {
-    font-size: 18px;
-    line-height: 26px;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: Static/Display Large/Size;
+    line-height: Static/Display Large/Line Height;
+    letter-spacing: Static/Display Large/Tracking;
+    text-align: center;
   }
 }
 
@@ -206,31 +130,25 @@ text-align: center;
 
     &__title {
       font-family: Inter;
-font-weight: 700;
-font-style: Bold;
-font-size: Static/Display Large/Size;
-line-height: Static/Display Large/Line Height;
-letter-spacing: Static/Display Large/Tracking;
-text-align: center;
-
+      font-weight: 700;
+      font-style: Bold;
+      font-size: Static/Display Large/Size;
+      line-height: Static/Display Large/Line Height;
+      letter-spacing: Static/Display Large/Tracking;
+      text-align: center;
     }
 
     &__text {
-     font-family: Inter;
-font-weight: 400;
-font-size: 20px;
-line-height: 30px;
-letter-spacing: 0%;
-text-align: center;
-
+      font-family: Inter;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 30px;
+      letter-spacing: 0%;
+      text-align: center;
     }
   }
 
   .campaign-card__image img {
     height: 296px;
-  }
-
-  .notification {
-    display: none;
   }
 }

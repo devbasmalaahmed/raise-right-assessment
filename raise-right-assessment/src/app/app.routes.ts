@@ -1,9 +1,15 @@
 import { Routes } from '@angular/router';
-import { CampaignsListComponent } from './features/Campaigns/campaigns-list/campaigns-list.component';
-import { CampaignsDetailsComponent } from './features/Campaigns/campaigns-details/campaigns-details.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'campaigns', pathMatch: 'full' },
-  { path: 'campaigns', component: CampaignsListComponent },
-  { path: 'campaigns/:id', component: CampaignsDetailsComponent },
+  {
+    path: 'campaigns',
+    loadComponent: () => import('./features/Campaigns/campaigns-list/campaigns-list.component').then(m => m.CampaignsListComponent),
+    title: 'Campaigns List'
+  },
+  {
+    path: 'campaigns/:id',
+    loadComponent: () => import('./features/Campaigns/campaigns-details/campaigns-details.component').then(m => m.CampaignsDetailsComponent),
+    title: 'Campaign Details'
+  },
 ];
