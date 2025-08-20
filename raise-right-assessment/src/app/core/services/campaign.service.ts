@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Apollo, gql } from 'apollo-angular';
-import { Observable } from 'rxjs';
+import { map, Observable } from 'rxjs';
 import { Campaign } from '../../shared/models/campaign.models';
 
 @Injectable({
@@ -32,14 +32,15 @@ private REST_API = 'https://raise-right-assessment-mocks.up.railway.app/api/camp
             currentAmount
             description
             imageUrl
-            donors {
-              name
-              amount
-            }
           }
         }
       `,
       variables: { id }
     }).valueChanges;
   }
+getDonors(id: number): Observable<any[]> {
+  return this.http.get<any>(`${this.REST_API}/${id}`)
+    .pipe(map(res => res.donors ?? []));
+}
+
 }

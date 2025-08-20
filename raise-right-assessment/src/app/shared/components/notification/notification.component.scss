@@ -1,0 +1,86 @@
+$font-family: "Inter", sans-serif;
+$color-primary: #7f56d9;
+$color-dark: #181d27;
+$color-gray: #535862;
+$color-bg: #fff;
+$color-progress: #80ef76;
+$color-progress-bg: #ececec;
+/* Notification Section */
+.notification {
+  background-color: #fafafa;
+  padding: 2rem;
+
+  h3 {
+    font-family: $font-family;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -2%;
+    text-align: center;
+    color: $color-dark;
+  }
+
+  p {
+    font-family: $font-family;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 30px;
+    text-align: center;
+    color: $color-gray;
+  }
+
+  span {
+    font-family: $font-family;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    color: $color-gray;
+    text-align: left;
+    max-width: 473px;
+    display: block;
+    margin: auto;
+    width: 374px;
+  }
+
+  span a {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .form-control {
+    height: 48px;
+    width: 360px !important;
+    border-radius: 8px;
+    border: 1px solid #d5d7da;
+    box-shadow: 0px 1px 2px 0px #0a0d120d;
+    margin: 0 auto;
+  }
+
+  .btn {
+    background-color: $color-primary;
+    border: 1px solid $color-primary;
+    border-radius: 8px;
+    color: #fff;
+    font-family: $font-family;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    padding: 0.6rem 1.4rem;
+  }
+}
+@media (max-width: 992px){
+      .notification h3 {
+    font-size: 28px;
+    line-height: 36px;
+  }
+
+  .notification p {
+    font-size: 18px;
+    line-height: 26px;
+  }
+}
+@media (max-width: 576px){
+      .notification {
+    display: none;
+  }
+}

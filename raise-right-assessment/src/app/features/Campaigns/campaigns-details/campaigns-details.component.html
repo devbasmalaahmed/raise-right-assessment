@@ -1,1 +1,155 @@
-<p>campaigns-details works!</p>
+<!-- Loading State: shows spinner and loading message -->
+<div *ngIf="loading" class="text-center py-5">
+  <div class="spinner-border text-primary" role="status"></div>
+  <p>Loading campaign details...</p>
+</div>
+
+<!-- Error State: shows error alert if loading fails -->
+<div *ngIf="error && !loading" class="alert alert-danger text-center my-5">
+  Failed to load campaign details. Please try again later.
+</div>
+
+<!-- Main Content: rendered only if not loading/error and campaign present -->
+@if (!loading && !error && campaign) {
+<!-- Header: Campaign title and section name -->
+<header>
+  <div
+    class="content d-flex justify-content-center flex-column align-items-center"
+  >
+    <h6>
+      <a [routerLink]="['/campaigns']">Campaigns</a>
+      <span class="ps-2 custom_char">·</span>
+      <span class="ps-2">Campaign Details</span>
+    </h6>
+    <h2 class="pt-3">{{ campaign.name }}</h2>
+  </div>
+</header>
+
+<!-- Campaign main details (image, description, progress, stats) -->
+<section class="campaigns-details py-5 mt-5">
+  <div class="container">
+    <div class="row gap-5">
+      <!-- Campaign image -->
+      <div class="col-md-5 col-sm-12">
+        <img [src]="campaign.imageUrl" alt="{{ campaign.name }}" width="500" />
+      </div>
+
+      <!-- Campaign textual details, description, stats -->
+      <div class="col-md-5 sm-12">
+        <p>We've helped hundreds of users raise funds</p>
+        <h4>{{ campaign.description }}</h4>
+
+        <!-- Progress bar displaying percentage completion -->
+        <div class="progress my-3">
+          <progress
+            class="progress-bar"
+            [value]="(campaign.currentAmount / campaign.goal) * 100"
+          ></progress>
+        </div>
+
+        <!-- Campaign statistics: target, achieved, raised, donors -->
+        <div class="stats row d-flex justify-content-between flex-wrap">
+          <div class="stat col-md-6 col-sm-12">
+            <h6>{{ campaign.goal | currency : "USD" : "symbol" : "1.0-0" }}</h6>
+            <p>Campaign Target</p>
+          </div>
+          <div class="stat col-md-6 col-sm-12">
+            <h6>
+              {{
+                (campaign.currentAmount / campaign.goal) * 100
+                  | number : "1.0-0"
+              }}%
+            </h6>
+            <p>Campaign Target Achieved</p>
+          </div>
+          <div class="stat col-md-6 col-sm-12">
+            <h6>
+              {{
+                campaign.currentAmount | currency : "USD" : "symbol" : "1.0-0"
+              }}
+            </h6>
+            <p>Raised Funds</p>
+          </div>
+          <div class="stat col-md-6 col-sm-12">
+            <h6>{{ donors.length }}+</h6>
+            <p>Donors</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Donors List: rendered if donors exist -->
+<section class="champions mt-5">
+  @if (donors.length > 0) {
+  <div class="container">
+    <h5>Champions of the Cause</h5>
+    <!-- @for loops over donors; each donor card shown. track donor.id for performance -->
+    <div class="row mt-4">
+      @for (donor of donors; track donor.id) {
+      <div class="col-md-6 col-sm-12 mb-3">
+        <div class="card p-3 shadow-sm">
+          <div class="d-flex justify-content-between align-items-center">
+            <h6 class="mb-0">{{ donor.name }}</h6>
+            <span class="badge">New</span>
+          </div>
+          <div class="mt-3 d-flex align-items-center">
+            <span class="me-1 text-secondary">$</span>
+            <span class="fw-semibold">{{
+              donor.amount | currency : "USD" : "symbol" : "1.0-0"
+            }}</span>
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+  </div>
+  }
+</section>
+
+<!-- Fallback: No donors message -->
+@if (donors.length === 0 && !loading && !error) {
+<section class="champions mt-5">
+  <div class="container text-center text-muted">
+    <h6>No donors yet. Be the first to contribute!</h6>
+  </div>
+</section>
+}
+<section class="donate mt-5">
+  <h5>Donate Now</h5>
+  <form class="donate-form">
+    <input type="text" placeholder="$10.00" class="custom-width" />
+    <input type="text" placeholder="Enter your name" />
+    <button type="submit" class="btn">Donate</button>
+  </form>
+</section>
+<section class="partners py-5 mt-5">
+  <div class="container">
+    <p>Our partners help drive the success of your campaigns</p>
+    <div class="partners-logos mt-5">
+      <div class="partner">
+        <img src="assets/partner.png" alt="Layers" />
+        <span>Layers</span>
+      </div>
+      <div class="partner">
+        <img src="assets/Logomark (1).png" alt="Sisyphus" />
+        <span>Sisyphus</span>
+      </div>
+      <div class="partner">
+        <img src="assets/Logomark (2).png" alt="Circoole" />
+        <span>Circooles</span>
+      </div>
+      <div class="partner">
+        <img src="assets/Logomark (3).png" alt="Catalog" />
+        <span>Catalog</span>
+      </div>
+      <div class="partner">
+        <img src="assets/Logomark (4).png" alt="Quotient" />
+        <span>Quotient</span>
+      </div>
+    </div>
+  </div>
+</section>
+<app-notification></app-notification>
+}
